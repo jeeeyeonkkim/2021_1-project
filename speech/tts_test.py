@@ -14,7 +14,7 @@ def tts_f():
   tObj = cSpeech(conf=cfg)
   filename = cfg.TESTDATA_PATH+"/tts.mp3"
   tObj.tts("<speak>\
-              <voice name='MAN_READ_CALM'>안녕하세요. 반갑습니다.<break time='500ms'/></voice>\
+              <voice name='MAN_READ_CALM'>반갑다.<break time='500ms'/></voice>\
             </speak>"\
           , filename)
   print(filename)

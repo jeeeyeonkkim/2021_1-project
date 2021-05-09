@@ -18,6 +18,7 @@ def test_func():
   #img = cam.imread("/home/pi/test.jpg")
 
   # Write
+
   cam.imwrite("test.jpg", img)
 
   # display (only GUI)

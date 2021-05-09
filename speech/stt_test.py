@@ -10,5 +10,5 @@ sys.path.append(cfg.OPENPIBO_PATH + '/lib')
 from speech.speechlib import cSpeech
 
 obj = cSpeech(conf=cfg)
-ret = obj.stt()
-print(ret)
+#ret = obj.stt()
+#print(ret)

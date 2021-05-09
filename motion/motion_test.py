@@ -11,4 +11,4 @@ from motion.motionlib import cMotion
 
 if __name__ == "__main__":
   m = cMotion(conf=cfg)
-  m.set_motion(name="wave3", cycle=10)
+  m.set_motion(name="wave3", cycle=2)
