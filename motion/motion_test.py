@@ -1,6 +1,6 @@
 import os
 import sys
-
+import time
 # 상위 디렉토리 추가 (for utils.config)
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from utils.config import Config as cfg
@@ -11,4 +11,11 @@ from motion.motionlib import cMotion
 
 if __name__ == "__main__":
   m = cMotion(conf=cfg)
-  m.set_motion(name="wave3", cycle=2)
+  
+  #m.set_motion(name="m1", cycle=1) #up
+  m.set_motion(name="m2", cycle=1) #front
+  #m.set_motion(name="m3", cycle=1) #down
+
+  
+  
+
