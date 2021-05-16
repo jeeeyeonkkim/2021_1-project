@@ -19,14 +19,34 @@ TCP_PORT = 1234
 #송신을 위한 socket 준비
 sock = socket.socket()
 sock.connect((TCP_IP, TCP_PORT))
+
+#이미지 읽어오기
+#cap.set(3, 640) #WIDTH
+#cap.set(4, 480) #HEIGHT
+
+#얼굴 인식 캐스케이드 파일 읽기
+face_cascade = cv2.CascadeClassifier('haarcascade_frontface.xml')
+
 #OpenCV를 이용해서 webcam으로 부터 이미지 추출
 #cam = cCamera()
 capture = cv2.VideoCapture(0)
+capture.set(3, 640) #WIDTH
+capture.set(4, 480) #HEIGHT
 
 while True:
     #frame = cam.read()
     ret, frame = capture.read()
-    #cam.imwrite("test.jpg", frame)
+    print("here1..")
+    #frame을 바꾸자..
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
+    #인식된 얼굴 갯수를 출력
+    print(len(faces))
+
+    #인식된 얼굴에 사각형을 출력
+    for (x,y,w,h) in faces:
+        cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
 
     #추출한 이미지를 String 형태로 변환(인코딩)시키는 과정
     encode_param=[int(cv2.IMWRITE_JPEG_QUALITY),90]
@@ -37,13 +57,8 @@ while True:
     #String 형태로 변환한 이미지를 socket을 통해서 전송
     sock.send( str(len(stringData)).ljust(16).encode())
     sock.send( stringData )
-    #temp = sock.recv(1024)
+    #print("11")
 
-    #다시 이미지로 디코딩해서 화면에 출력. 그리고 종료
-    #decimg=cv2.imdecode(data,1)
-    #cv2.imshow('CLIENT',decimg)
-    #if cv2.waitKey() == ord('q'): # q를 누르면 종료
-        #break
 cv2.destroyAllWindows() 
 sock.close()
 
