@@ -14,8 +14,8 @@ sys.path.append(cfg.OPENPIBO_PATH + '/lib')
 from vision.visionlib import cCamera
 
 #연결할 서버(수신단)의 ip주소와 port번호
-TCP_IP = '172.18.139.5'
-TCP_PORT = 1234
+TCP_IP = '172.18.152.170'
+TCP_PORT = 1111
 #송신을 위한 socket 준비
 sock = socket.socket()
 sock.connect((TCP_IP, TCP_PORT))

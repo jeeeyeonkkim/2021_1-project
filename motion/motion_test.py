@@ -12,8 +12,8 @@ from motion.motionlib import cMotion
 if __name__ == "__main__":
   m = cMotion(conf=cfg)
   
-  #m.set_motion(name="m1", cycle=1) #up
-  m.set_motion(name="m2", cycle=1) #front
+  m.set_motion(name="m1", cycle=1) #up
+  # m.set_motion(name="m2", cycle=1) #front
   #m.set_motion(name="m3", cycle=1) #down
 
   
