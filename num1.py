@@ -1,35 +1,22 @@
-import numpy as np
-import seaborn as sns
+# import pyttsx3
+# engine = pyttsx3.init()
+# voices = engine.getProperty('voices')
+# engine.setProperty('voice', voices[1].id) #changing index changes voices but ony 0 and 1 are working here
+# engine.say('Hello World')
+# engine.runAndWait()
 
 
-def p_x_given_y(y, mus, sigmas):
-    mu = mus[0] + sigmas[1, 0] / sigmas[0, 0] * (y - mus[1])
-    sigma = sigmas[0, 0] - sigmas[1, 0] / sigmas[1, 1] * sigmas[1, 0]
-    return np.random.normal(mu, sigma)
+# import pyttsx3
+# engine = pyttsx3.init()
+# voices = engine.getProperty('voices')
+# voiceFemales = filter(lambda v: v.gender == 'VoiceGenderFemale', voices)
+# for v in voiceFemales:
+#     engine.setProperty('voice', v.id)
+#     engine.say('Hello world from ' + v.name)
+#     engine.runAndWait()
 
-
-def p_y_given_x(x, mus, sigmas):
-    mu = mus[1] + sigmas[0, 1] / sigmas[1, 1] * (x - mus[0])
-    sigma = sigmas[1, 1] - sigmas[0, 1] / sigmas[0, 0] * sigmas[0, 1]
-    return np.random.normal(mu, sigma)
-
-
-def gibbs_sampling(mus, sigmas, iter=10000):
-    samples = np.zeros((iter, 2))
-    y = np.random.rand() * 10
-
-    for i in range(iter):
-        x = p_x_given_y(y, mus, sigmas)
-        y = p_y_given_x(x, mus, sigmas)
-        samples[i, :] = [x, y]
-
-    return samples
-
-
-if __name__ == '__main__':
-    mus = np.array([5, 5])
-    sigmas = np.array([[1, .9], [.9, 1]])
-
-    samples = gibbs_sampling(mus, sigmas)
-    sns.jointplot(samples[:, 0], samples[:, 1])
-    
+import pyttsx3
+engine = pyttsx3.init()
+engine.setProperty('voice', 'com.apple.speech.synthesis.voice.samantha')
+engine.say(" hello hello 안녕하세요")
+engine.runAndWait()
